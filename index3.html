@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truco Paulista Online</title>
+  <link rel="stylesheet" href="teste.css">
+</head>
+<body>
+
+  <h1>Truco Paulista</h1>
+
+  <div class="setup-container">
+    <label for="mode">Modo de Jogo: </label>
+    <select id="mode">
+      <option value="1v1">1x1 (Você vs Bot)</option>
+      <option value="2v2">2x2 (Você + Bot vs 2 Bots)</option>
+    </select>
+    <button onclick="startGame()">Iniciar Novo Jogo</button>
+  </div>
+
+  <div class="scoreboard">
+    <div>Nossa Dupla/Você: <span id="score-us">0</span></div>
+    <div>Eles (Bots): <span id="score-them">0</span></div>
+  </div>
+
+  <div class="game-board">
+    <div class="player-area">
+      <span>Bot Oponente (Topo)</span>
+      <div id="hand-top" class="cards-container"></div>
+    </div>
+
+    <div class="side-players" id="side-players" style="display: none;">
+      <div class="player-area">
+        <span>Bot Oponente (Esq)</span>
+        <div id="hand-left" class="cards-container"></div>
+      </div>
+      <div class="player-area">
+        <span>Bot Parceiro (Dir)</span>
+        <div id="hand-right" class="cards-container"></div>
+      </div>
+    </div>
+
+    <div class="table-center">
+      <div>
+        <small>VIRA</small>
+        <div id="vira-card"></div>
+      </div>
+      <div>
+        <small>MESA</small>
+        <div id="played-cards" class="played-cards"></div>
+      </div>
+    </div>
+
+    <div id="truco-actions" style="margin-bottom: 10px;">
+      <button id="btn-truco" onclick="askTruco()">Pedir TRUCO!</button>
+      <div id="truco-responses" style="display: none;">
+        <button onclick="respondTruco('accept')" style="background-color: #52b788; color: #fff;">Aceitar</button>
+        <button onclick="respondTruco('refuse')" style="background-color: #e63946; color: white;">Correr</button>
+        <button id="btn-raise" onclick="respondTruco('raise')" style="background-color: #ffb703; color: #000;">Aumentar</button>
+      </div>
+    </div>
+
+    <div class="player-area">
+      <span>Sua Mão (Você)</span>
+      <div id="hand-user" class="cards-container"></div>
+    </div>
+  </div>
+
+  <div id="log" class="log-box">Aguardando início do jogo...</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
